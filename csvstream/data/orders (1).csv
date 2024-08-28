@@ -1,0 +1,4 @@
+OrderID,CustomerName,OrderDate,TotalAmount
+1001,Alice Green,2024-08-01,250.0
+1002,Bob White,2024-08-02,150.0
+1003,Charlie Black,2024-08-03,350.0
