@@ -1,10 +1,11 @@
 from .models import *
-from .serializers import LineItemSerializer,OrderSerializer
+from .serializers import LineItemSerializer, OrderSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import APIView, api_view
 from rest_framework import status
+from rest_framework import generics
 
-
+"""
 @api_view(['GET', 'POST'])
 def Order_list(request):
     if request.method == 'GET':
@@ -78,3 +79,24 @@ def line_item_detail(request, pk):
     if request.method == 'DELETE':
         line_item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+"""
+
+
+class OrderListCreateView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class LineItemListCreateView(generics.ListCreateAPIView):
+    queryset = Line_items.objects.all()
+    serializer_class = LineItemSerializer
+
+
+class LineItemDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Line_items.objects.all()
+    serializer_class = LineItemSerializer
